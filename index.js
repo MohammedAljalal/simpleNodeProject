@@ -4,7 +4,7 @@ const Path=require('path')
 const cors=require('cors');
 const httpststusText=require('./Utills/httpststusText')
 const app=express();
-app.use('/Aploads',express.static(Path.join(__dirname,'Aploads')))
+app.use('api/Aploads',express.static(Path.join(__dirname,'Aploads')))
 const mongoose=require('mongoose');
 const url = process.env.MONGO_URL;
 console.log(url);
@@ -17,8 +17,8 @@ app.use(cors());
 app.use(express.json());
 const coursesRouer=require('./Rourer/courses.router');
 const usersrouter=require('./Rourer/Users.model');
-app.use('/courses',coursesRouer);
-app.use('/users',usersrouter)
+app.use('api/courses',coursesRouer);
+app.use('api/users',usersrouter)
 
  app.use((req, res) => {
   res.status(error.statuscode||500).json(
